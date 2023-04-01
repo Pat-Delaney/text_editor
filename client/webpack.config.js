@@ -24,16 +24,22 @@ module.exports = () => {
       }),
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'service-worker.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Just Another Text Editor',
         short_name: 'Jate',
         description: 'Simple text editor Progressive Web App',
+        background_color: '#272822',
+        theme_color: '#31a9e1',
+        start_url: './',
+        publicPath: './',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512],
+            size: 500,
             destination: path.join('assets', 'icons')
           },
         ]
